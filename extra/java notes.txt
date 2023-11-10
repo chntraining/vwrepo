@@ -1,0 +1,392 @@
+OOPS
+
+Object  
+      properties/states   -- variables
+      method/behaviour -- methods
+      Identity                   -- object
+
+Class
+Inheritance
+Polymorphism
+    static/compile/ overloading
+    Dynamic/runtime/overridding
+
+Encapsulation  --access specifier  -- data hiding
+Abstraction  -- methods
+         Abstract class n interface
+
+---------------------------------------------
+M  --Model    --- db
+V   -- View     -- client/enduser
+C   -- Controller -- buz logic/ navigator
+
+------------------------------------------------------------
+EMS:
+
+package com.vw.view;
+
+import com.vw.controller.EmployeeController;
+import com.vw.model.Employee;
+
+//View -- Enduser
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to EMS");
+		
+		EmployeeController ec = new EmployeeController();
+		ec.addEmployee();
+		ec.viewEmployee();
+		
+
+	}
+
+}
+
+
+----
+package com.vw.controller;
+
+import com.vw.model.Employee;
+
+public class EmployeeController {
+	
+	Employee emp = new Employee();
+	public void addEmployee() {
+		
+		emp.setEmpno(101);
+		emp.setEname("Abishek");
+	}
+	
+	public void viewEmployee() {
+		System.out.println(emp.getEmpno()+ "  " + emp.getEname());
+		
+	}
+
+}
+
+---------------
+
+package com.vw.view;
+
+import com.vw.controller.EmployeeController;
+import com.vw.model.Employee;
+
+//View -- Enduser
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to EMS");
+		
+		EmployeeController ec = new EmployeeController();
+		ec.addEmployee();
+		ec.viewEmployee();
+		
+
+	}
+
+}
+
+
+****************************************************
+Collection:  
+
+Hetrogenous  
+
+Framework  -- DataStructure
+
+Linkedlist
+Stacks
+Queue
+
+Interface  : Collection
+
+Class	: Collections
+
+
+Deepikkaa
+
+Interface:
+
+List -- Accepts Duplicate
+       -- Ordered
+       -- indexed 
+Set   -- No Duplicates
+        -- Not Ordered
+        -- not indexed
+Map
+
+Generics: Compile-time type checking
+
+-----------------------------------------------------------
+Comparable  		  and 	Comparator    --- meant for sorting
+
+java.lang				java.util
+int compareTo(T o)			int compare(T o1, T o2)
+
+can work with only Integer datatype	Can work with any type of datatype
+class should implement this 		No need to use implements keyword
+interface
+
+? extends T
+
+? super T
+
+--------------------------------------------------------------
+Thread
+
+2 ways of creating Thread
+
+1) extends Thread
+2) implements Runnable  public void run();
+
+synchronization can be done in 2 ways
+
+at the method level
+at the block level
+synchronized - keyword
+
+//			try {
+//				for (int i = 0; i < 10; i++) {
+//					System.out.println(i);
+//					Thread.sleep(1000);
+//				}
+//			} catch (InterruptedException e) {
+//
+//				e.printStackTrace();
+//			}
+
+Multitasking
+MultiProcessing
+MultiThreading
+
+Thread is in blocked state in 2 ways
+
+1) by time     -- sleep()
+2) by event   -- wait(), notify()   -- Interthread Communication
+    producer -consumer     //Demand -supply
+
+---------------------------------------
+IO  -- Input Output
+
+Source     Destination
+Buffer
+File
+Harddisk
+Thread(process)
+
+INput or Output
+Based on the Data
+Binary Streams --Input/Output
+------------------
+InputStream
+OutputStream
+
+Character Streams
+-----------------------------
+Reader
+Writer
+
+-----------------------
+Serialization       --- Deserialization
+
+Convert Object to Byte Stream
+
+The Byte converted to Object
+
+Interface Serializable   -- Marker Interface 
+
+
+Serialization        ---  ObjectOutputStream - write
+Deserialization   -- ObjectInputStream  -- read
+
+
+--------------------------------------------------------
+join()
+
+
+-------------------------------------------------------------
+
+JDBC  - Java DataBase Connectivity
+
+Driver -- 
+
+
+Interfaces
+-----------------
+Connection - To establish the connection
+Statement -- To execute  static SQL statement  -- select * from employee;
+PreparedStatement -- To execute  Dynamic SQL statement  -- DML
+ResultSet  -- the result of the select query will be stored in the resultset object
+
+---------------------------
+
+DDL -- Data Definition Lanaguage   -- execute()
+   create, alter, drop, truncate, rename
+
+DML -- Data Manipulation Lanaguge  -- executeUpdate()
+  insert, update, delete
+
+DQL -- Data Query Lanaguage  -- executeQuery()
+    select
+
+====================================
+
+Camel Case Convention
+
+class	-MyClass
+interface	- MyInterface, My_Interface	
+array	-MyArray
+variables  - myFirstVariable
+methods   - myMethod()
+
+package	-- mypack   -- reverse of your domainname
+constants -- MYCONSTANT
+object	-- myClass--   same as class name
+
+--------------------------------------------------------
+Java 8
+
+To focus on function oriented java
+
+TO REDUCE the Boiler Plates code
+
+
+Functional Interface - An interface in which SINGLE ABSTRACT METHOD (SAM)..
+		along with zero or many default /static method
+  -- will work efficiently with Lambda expression
+
+Lambda Expression -- A function written as expression
+c=func()
+The target of the lambda expression is ALWAYS a functional interface
+
+Streams
+Optional Class   -- TO AVOID null pointer Exception
+Default Methods --Implemented method in the interface -  implement new features in the existing system without changing the existing system
+
+----------------------------------------------------------------
+
+Interface will create a layer of abstraction
+We have only abstract methods.
+All variables within interface are public static final
+All methods within interface are public abstract
+Can have only abstract methods within the interface *
+
+----------------------------------------------------------------
+
+PreDefined Functional Interface
+java.util.function
+
+Consumer - public void accept(T t)
+Function   - public R	apply(T t)
+Predicate  - public boolean test(T t)
+Supplier	- public T	get()
+
+interface Consumer
+{
+	public void accept(List list);
+}
+
+class MyClass {
+
+	public void accept(List list){
+	   System.out.println(list);
+	}
+	main()
+	{
+		Consumer c=list -> System.out.println(list);
+
+		userList.forEach(li -> System.out.println(li));
+	}	
+
+	}
+
+}
+
+-----------------------------------------------------------------
+parseXXX  -- String to primitive
+xxxValue() -- Wrapper to primitive
+valueOf()   -- primitive to Wrapper
+
+--------------------------------------------------------
+
+Streams:
+--------------
+-- pipeline of methods
+-- Sequential(default) and parallel
+-- Are Lazy
+-- Two types of Methods
+      --- intermediate method   -- one or more 
+      --- terminal method           -- ONLY One 
+-- All the streams shd mandatory have the terminal method
+-- The result of the intermediate method is not visible
+-- Has a source and destination
+       -- Collection, array  -- source
+       -- Collection, variable  -- destination
+-- Are never reused.
+
+
+
+To work with streams
+1) Make the data available in a stream
+2) call all necessary intermediate methods 
+3) Terminate with a terminal method(close the stream)
+
+-------------------------------------------------------------------
+java.util.stream
+
+IntStream    --  int primitive specialization of Stream.
+DoubleStream
+LongStream
+
+String str= new String()
+str.toUpperCase()
+
+-------------------------------------------------
+Datatypes:
+
+Value Type
+   
+     Predefined   -- 8 -- int ,double, float, long, short, byte, char, boolean(primitive datatypes)
+     UserDefined -- enum, struct(x)
+Reference Type
+      Predefined  -- String , Object(Super most class in java)
+     UserDefined -- class, interface, array  -- we create
+
+Enum
+   an numeric constant value assigned to a string 
+
+		Product prod = new Product();
+		
+		//Category c = Category.BOOKS;
+		//System.out.println(c.ordinal());
+
+
+
+-------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+Has a source and destination
+https://github.com/chntraining/vwrepo/
+
+
+
+
+
+
+
+https://forms.gle/CCDVQxjK2sMSdVwe7
+
+
