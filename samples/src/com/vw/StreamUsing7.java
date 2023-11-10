@@ -37,6 +37,7 @@ public class StreamUsing7 {
 		for (int i = 1; i < intList.size(); i++) {
 			Integer num = intList.get(i);
 			if (num.intValue() > max) {
+				
 				max = num.intValue();
 			}
 		}
